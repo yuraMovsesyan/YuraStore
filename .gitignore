@@ -132,4 +132,6 @@ nb-configuration.xml
 /writable
 /app/config/*
 
+public\.htaccess
+
 !app/config/Routes.php
