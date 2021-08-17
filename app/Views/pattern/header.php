@@ -247,7 +247,7 @@
                                                                 </div>
                                                         </div>
                                                         
-                                                        <? if (session()->has('id')): ?>
+                                                        <?php  if (session()->has('id')): ?>
                                                         <a class="uk-navbar-item uk-link-muted tm-navbar-button" href="#"
                                                         uk-icon="user"></a>
                                                         <div class="uk-padding-small uk-margin-remove uk-background-secondary" uk-dropdown="pos: bottom-right; offset: -10; delay-hide: 200;"
@@ -270,9 +270,9 @@
                                                                         </li>
                                                                 </ul>
                                                         </div>
-                                                        <? else: ?>
+                                                        <?php else: ?>
                                                             <a class="uk-navbar-item uk-link-muted tm-navbar-button" href="/login" uk-icon="sign-in"></a>
-                                                        <? endif; ?>
+                                                        <?php endif ?>
                                                  </div>
                                         </div>
                                 </div>
