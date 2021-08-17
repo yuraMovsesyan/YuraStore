@@ -3,7 +3,7 @@ on:
     branches:
       - dev
     
-name: 🚀 Deploy website on push
+name: 🚀 Deploy dev.yura.store
 jobs:
   web-deploy:
     name: 🎉 Deploy
