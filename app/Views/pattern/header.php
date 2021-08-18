@@ -274,14 +274,23 @@
                                                         <a class="uk-navbar-item uk-link-muted tm-navbar-button" href="#modal-example" uk-toggle uk-icon="sign-in"></a>
 
                                                         <div id="modal-example" uk-modal>
-                                                                <div class="uk-modal-dialog uk-modal-body">
-                                                                        <h2 class="uk-modal-title">Headline</h2>
-                                                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                                                        <p class="uk-text-right">
-                                                                        <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
-                                                                        <button class="uk-button uk-button-primary" type="button">Save</button>
-                                                                        </p>
+                                                                <div class="uk-modal-dialog uk-modal-body uk-border-rounded uk-background-secondary uk-light">
+                                                                        <h2 class="uk-modal-title uk-text-left">Авторизация</h2>
+                                                                        <button class="uk-modal-close-default" type="button" uk-close></button>
+                                                                        <div class="uk-flex-middle" uk-grid>
+                                                                                <div class="uk-width-2-3@m uk-width-2-3@s uk-visible@s">
+                                                                                        
+                                                                                        <img src="https://cdn.dribbble.com/users/1378759/screenshots/4799608/p-logo.png" alt="Image">
+                                                                                </div>
+                                                                                <div class="uk-width-1-3@m uk-width-1-3@s uk-flex-first">
+                                                                                        <a class="uk-button uk-button-default uk-button-large uk-width-1-1 uk-margin-small-bottom uk-text-left uk-padding-remove" href=""><span class="uk-margin-left uk-margin-right" uk-icon="facebook"></span>Facebook</a>
+                                                                                        <a class="uk-button uk-button-default uk-button-large uk-width-1-1 uk-margin-small-bottom uk-text-left uk-padding-remove" href=""><span class="uk-margin-left uk-margin-right" uk-icon="google"></span>Google</a>
+                                                                                        <a class="uk-button uk-button-default uk-button-large uk-width-1-1 uk-margin-small-bottom uk-text-left uk-padding-remove" href=""><span class="uk-margin-left uk-margin-right" uk-icon="twitter"></span>Twitter</a>
+                                                                                        <a class="uk-button uk-button-default uk-button-large uk-width-1-1 uk-margin-small-bottom uk-text-left uk-padding-remove" href=""><span class="uk-margin-left uk-margin-right" uk-icon="discord"></span>Discord</a>
+                                                                                </div>
+                                                                        </div>
                                                                 </div>
+
                                                         </div>
 
                                                         <?php endif ?>
