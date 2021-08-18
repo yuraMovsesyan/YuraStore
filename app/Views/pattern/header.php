@@ -286,7 +286,7 @@
                                                                                         <a class="uk-button uk-button-default uk-button-large uk-width-1-1 uk-margin-small-bottom uk-text-left uk-padding-remove" href=""><span class="uk-margin-left uk-margin-right" uk-icon="facebook"></span>Facebook</a>
                                                                                         <a class="uk-button uk-button-default uk-button-large uk-width-1-1 uk-margin-small-bottom uk-text-left uk-padding-remove" href=""><span class="uk-margin-left uk-margin-right" uk-icon="google"></span>Google</a>
                                                                                         <a class="uk-button uk-button-default uk-button-large uk-width-1-1 uk-margin-small-bottom uk-text-left uk-padding-remove" href=""><span class="uk-margin-left uk-margin-right" uk-icon="twitter"></span>Twitter</a>
-                                                                                        <a class="uk-button uk-button-default uk-button-large uk-width-1-1 uk-margin-small-bottom uk-text-left uk-padding-remove" href=""><span class="uk-margin-left uk-margin-right" uk-icon="discord"></span>Discord</a>
+                                                                                        <a class="uk-button uk-button-default uk-button-large uk-width-1-1 uk-margin-bottom-remove uk-text-left uk-padding-remove" href=""><span class="uk-margin-left uk-margin-right" uk-icon="discord"></span>Discord</a>
                                                                                 </div>
                                                                         </div>
                                                                 </div>
