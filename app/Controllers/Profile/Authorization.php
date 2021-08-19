@@ -65,75 +65,34 @@ class Authorization extends Controller
 
                 $config_data = $config->get_data("discord");
 
-                $params = array(
-                        'client_id' => $config_data['id'],
-                        'redirect_uri' => $config_data['url'],
-                        'response_type' => 'code',
-                        'client_secret' => $config_data['secret'],
-                        'code' => $_GET['code']
+                $params = http_build_query(
+                        array(
+                                'client_id' => $config_data['id'],
+                                'client_secret' => $config_data['secret'],
+                                'grant_type' => 'authorization_code',
+                                'code' => $_GET['code'],
+                                'redirect_uri' => $config_data['url']
+                        )
                 );
 
-                // Exchange the auth code for a token
-                $token = $this->apiRequest("https://discord.com/api/oauth2/token", array(
-                        "grant_type" => "authorization_code",
-                        'client_id' => $config_data['id'],
-                        'client_secret' => $config_data['secret'],
-                        'redirect_uri' => $config_data['url'],
-                        'code' => $_GET['code']
-                ));
-                if (!$token){
-                        return "error token";
-                }
+                $opts = array('http' =>
+                        array(
+                                'method'  => 'POST',
+                                'header'  => 'Content-Type: application/x-www-form-urlencoded',
+                                'content' => $params
+                        )
+                );
 
-                var_dump($token);
+                $context  = stream_context_create($opts);
 
-                $user = $this->apiRequest2('https://discordapp.com/api/users/@me', $token['access_token']);
+                $result = file_get_contents('https://discord.com/api/oauth2/token', false, $context);
 
-                echo '<pre>';
-                var_dump($user);
-                echo '</pre>';
+                
+
+                var_dump($result);
+
+
+
 
         }
-
-        private function apiRequest($url, $post=FALSE, $headers=array()) {
-                $ch = curl_init($url);
-                curl_setopt($ch, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
-                curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-              
-                $response = curl_exec($ch);
-              
-              
-                if($post)
-                  curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($post));
-              
-                $headers[] = 'Accept: application/json';
-              
-                if(session('access_token'))
-                  $headers[] = 'Authorization: Bearer ' . session('access_token');
-              
-                curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-              
-                $response = curl_exec($ch);
-                return json_decode($response, true);
-              }
-
-              private function apiRequest2($url, $token) {
-                $ch = curl_init($url);
-                curl_setopt($ch, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
-                curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-              
-                $response = curl_exec($ch);
-              
-              
-                $headers[] = 'Accept: application/json';
-              
-                if(session('access_token'))
-                  $headers[] = 'Authorization: Bearer ' . $token;
-              
-                curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-              
-                $response = curl_exec($ch);
-                return json_decode($response, true);
-              }
-              
 }
