@@ -11,10 +11,21 @@ class Authorization extends Controller
         {
                 $config = config('SocialNetwork');
 
-                $config_data = $config->get_data("fb");
-
-
+                //facebook link
+                $config_data = $config->get_data("facebook");
                 echo "<a target='_blank' href='https://www.facebook.com/v11.0/dialog/oauth?client_id=".$config_data['id']."&redirect_uri=".$config_data['url']."&response_type=code&scope=public_profile,email' >FB login</a>";
+
+                echo "<br />";
+                //discord link
+                $config_data = $config->get_data("discord");
+                $params = array(
+                        'client_id' => $config_data['id'],
+                        'redirect_uri' => $config_data['url'],
+                        'response_type' => 'code',
+                        'scope' => 'identify guilds'
+                );
+                echo "<a target='_blank' href='https://discord.com/api/oauth2/authorize?".http_build_query($params)."' >DISCORD login</a>";
+
 	}
 
         public function facebook()
@@ -25,7 +36,7 @@ class Authorization extends Controller
 
                 $config = config('SocialNetwork');
 
-                $config_data = $config->get_data("fb");
+                $config_data = $config->get_data("facebook");
 
                 $token = json_decode(file_get_contents('https://graph.facebook.com/v11.0/oauth/access_token?client_id='.$config_data['id'].'&redirect_uri='.$config_data['url'].'&client_secret='.$config_data['secret'].'&code='.$_GET['code']), true);
 
@@ -43,4 +54,86 @@ class Authorization extends Controller
                 var_dump($data);
                 echo "</pre>";
         }
+
+        public function discord()
+        {
+                if (!isset($_GET['code'])){
+                        return 'error code';
+                }
+
+                $config = config('SocialNetwork');
+
+                $config_data = $config->get_data("discord");
+
+                $params = array(
+                        'client_id' => $config_data['id'],
+                        'redirect_uri' => $config_data['url'],
+                        'response_type' => 'code',
+                        'client_secret' => $config_data['secret'],
+                        'code' => $_GET['code']
+                );
+
+                // Exchange the auth code for a token
+                $token = $this->apiRequest("https://discord.com/api/oauth2/token", array(
+                        "grant_type" => "authorization_code",
+                        'client_id' => $config_data['id'],
+                        'client_secret' => $config_data['secret'],
+                        'redirect_uri' => $config_data['url'],
+                        'code' => $_GET['code']
+                ));
+                if (!$token){
+                        return "error token";
+                }
+
+                var_dump($token);
+
+                $user = $this->apiRequest2('https://discordapp.com/api/users/@me', $token['access_token']);
+
+                echo '<pre>';
+                var_dump($user);
+                echo '</pre>';
+
+        }
+
+        private function apiRequest($url, $post=FALSE, $headers=array()) {
+                $ch = curl_init($url);
+                curl_setopt($ch, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+              
+                $response = curl_exec($ch);
+              
+              
+                if($post)
+                  curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($post));
+              
+                $headers[] = 'Accept: application/json';
+              
+                if(session('access_token'))
+                  $headers[] = 'Authorization: Bearer ' . session('access_token');
+              
+                curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+              
+                $response = curl_exec($ch);
+                return json_decode($response, true);
+              }
+
+              private function apiRequest2($url, $token) {
+                $ch = curl_init($url);
+                curl_setopt($ch, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+              
+                $response = curl_exec($ch);
+              
+              
+                $headers[] = 'Accept: application/json';
+              
+                if(session('access_token'))
+                  $headers[] = 'Authorization: Bearer ' . $token;
+              
+                curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+              
+                $response = curl_exec($ch);
+                return json_decode($response, true);
+              }
+              
 }

@@ -42,6 +42,7 @@ $routes->group('authorization', function ($routes)
     # code...
     $routes->add('', 'profile\Authorization::index');
     $routes->add('facebook', 'profile\Authorization::facebook');
+    $routes->add('discord', 'profile\Authorization::discord');
 });
 
 /*
