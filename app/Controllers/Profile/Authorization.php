@@ -84,12 +84,23 @@ class Authorization extends Controller
                 );
 
                 $context  = stream_context_create($opts);
-
-                $result = file_get_contents('https://discord.com/api/oauth2/token', false, $context);
-
                 
+                $token = json_decode(file_get_contents('https://discord.com/api/oauth2/token', false, $context), true);
 
-                var_dump($result);
+                $opts = array('http' =>
+                        array(
+                                'method'  => 'GET',
+                                'header'  => 'Content-Type: application/x-www-form-urlencoded',
+                                'content' => $params
+                        )
+                );
+
+                $context  = stream_context_create($opts);
+
+                $user = json_decode(file_get_contents('https://discordapp.com/api/v6/users/@me'), true);
+
+
+                var_dump($user);
 
 
 
