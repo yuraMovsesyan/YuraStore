@@ -102,11 +102,14 @@ class Authorization extends Controller
                 curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
                 $response = curl_exec($ch);
-                var_dump($response);
-                $user = json_decode($response);
+                
+                $user = json_decode($response, true);
 
-
+                echo "<pre>";
                 var_dump($user);
+                echo "</pre>";
+
+                echo "<img src='https://cdn.discordapp.com/avatars/".$user['id']."/".$user['avatar']."'>";
 
 
 
