@@ -37,17 +37,11 @@ $routes->get('/', 'Main::index');
 $routes->get('/app', 'Main::index');
 $routes->get('/(:num)', 'App::app/$1');
 
-$routes->add('profile', 'profile\UserController::profile2');
-
-//$routes->get('/login', 'profile\Login::index');
-
-//$routes->get('login', 'Profile\Login::index');
-$routes->group('login', function ($routes)
+$routes->group('authorization', function ($routes)
 {
     # code...
-    $routes->add('', 'profile\Login::index');
-    $routes->add('exit', 'profile\Login::exit');
-    $routes->add('vk', 'profile\Login::vk');
+    $routes->add('', 'profile\Authorization::index');
+    $routes->add('facebook', 'profile\Authorization::facebook');
 });
 
 /*
