@@ -87,17 +87,23 @@ class Authorization extends Controller
                 
                 $token = json_decode(file_get_contents('https://discord.com/api/oauth2/token', false, $context), true);
 
-                $opts = array('http' =>
-                        array(
-                                'method'  => 'GET',
-                                'header'  => 'Content-Type: application/x-www-form-urlencoded',
-                                'content' => $params
-                        )
-                );
+                var_dump($token);
 
-                $context  = stream_context_create($opts);
+                $ch = curl_init('https://discordapp.com/api/users/@me');
+                curl_setopt($ch, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 
-                $user = json_decode(file_get_contents('https://discordapp.com/api/v6/users/@me'), true);
+                $response = curl_exec($ch);
+
+                $headers[] = 'Accept: application/json';
+
+                $headers[] = 'Authorization: Bearer ' . $token['access_token'];
+
+                curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+                $response = curl_exec($ch);
+                var_dump($response);
+                $user = json_decode($response);
 
 
                 var_dump($user);
