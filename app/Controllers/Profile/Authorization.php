@@ -197,55 +197,41 @@ class Authorization extends Controller
 
         public function github()
         {
-                if (!isset($_GET['code'])){
-                        return 'error code';
-                }
-
-                $config = config('SocialNetwork');
-
-                $config_data = $config->get_data("github");
-
-                $params = http_build_query(
-                        array(
-                                'client_id' => $config_data['id'],
+                if (!empty($_GET['code'])) {
+                        $config = config('SocialNetwork');
+                        $config_data = $config->get_data("github");
+                        $params = array(
+                                'client_id'     => $config_data['id'],
                                 'client_secret' => $config_data['secret'],
-                                'code' => $_GET['code'],
-                                'redirect_uri' => $config_data['url']
-                        )
-                );
-
-                $opts = array('http' =>
-                        array(
-                                'method'  => 'POST',
-                                'header'  => 'Content-Type: application/x-www-form-urlencoded',
-                                'content' => $params
-                        )
-                );
-
-                $context  = stream_context_create($opts);
-                
-                $token = json_decode(file_get_contents('https://github.com/login/oauth/access_token', false, $context), true);
-
-                var_dump($token);
-
-                $ch = curl_init('https://api.github.com/user');
-                curl_setopt($ch, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
-                curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-
-                $response = curl_exec($ch);
-
-                $headers[] = 'Accept: application/json';
-
-                $headers[] = 'Authorization: Bearer ' . $token['access_token'];
-
-                curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-
-                $response = curl_exec($ch);
-                
-                $user = json_decode($response, true);
-
-                echo "<pre>";
-                var_dump($user);
-                echo "</pre>";
+                                'redirect_uri'  => $config_data['url'],
+                                'code'          => $_GET['code']
+                        );	
+                                        
+                        $ch = curl_init('https://github.com/login/oauth/access_token');
+                        curl_setopt($ch, CURLOPT_POST, 1);
+                        curl_setopt($ch, CURLOPT_POSTFIELDS, urldecode(http_build_query($params))); 
+                        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+                        curl_setopt($ch, CURLOPT_HEADER, false);
+                        $data = curl_exec($ch);
+                        curl_close($ch);	
+                        parse_str($data, $data);
+                 
+                        if (!empty($data['access_token'])) {
+                                $ch = curl_init('https://api.github.com/user');
+                                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+                                curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+                                curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: token ' . $data['access_token']));
+                                curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88');
+                                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                                $info = curl_exec($ch);
+                                curl_close($ch);
+                                $info = json_decode($info, true);
+                 
+                                if (!empty($info['id'])) {
+                                        print_r($info);
+                                }
+                        } 
+                }
         }
 }
