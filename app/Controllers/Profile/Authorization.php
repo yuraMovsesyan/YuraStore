@@ -160,5 +160,27 @@ class Authorization extends Controller
                 $token = json_decode(file_get_contents('https://id.twitch.tv/oauth2/token', false, $context), true);
 
                 var_dump($token);
+
+                $ch = curl_init('https://api.twitch.tv/helix/users');
+                curl_setopt($ch, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+
+                $response = curl_exec($ch);
+
+                $headers[] = 'Accept: application/json';
+                
+                $headers[] = 'Client-ID: '.$config_data['id'];
+
+                $headers[] = 'Authorization: Bearer ' . $token['access_token'];
+
+                curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+                $response = curl_exec($ch);
+                
+                $user = json_decode($response, true);
+
+                echo "<pre>";
+                var_dump($user);
+                echo "</pre>";
         }
 }
