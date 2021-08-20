@@ -43,6 +43,7 @@ $routes->group('authorization', function ($routes)
     $routes->add('', 'profile\Authorization::index');
     $routes->add('facebook', 'profile\Authorization::facebook');
     $routes->add('discord', 'profile\Authorization::discord');
+    $routes->add('twitch', 'profile\Authorization::twitch');
 });
 
 /*

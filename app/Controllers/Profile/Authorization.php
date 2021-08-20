@@ -26,6 +26,17 @@ class Authorization extends Controller
                 );
                 echo "<a target='_blank' href='https://discord.com/api/oauth2/authorize?".http_build_query($params)."' >DISCORD login</a>";
 
+                echo "<br />";
+                //twitch link
+                $config_data = $config->get_data("twitch");
+                $params = array(
+                        'client_id' => $config_data['id'],
+                        'redirect_uri' => $config_data['url'],
+                        'response_type' => 'code',
+                        'scope' => 'user:edit user:read:email'
+                );
+                echo "<a target='_blank' href='https://id.twitch.tv/oauth2/authorize?".http_build_query($params)."' >twitch login</a>";
+
 	}
 
         public function facebook()
@@ -114,5 +125,40 @@ class Authorization extends Controller
 
 
 
+        }
+
+        public function twitch()
+        {
+                if (!isset($_GET['code'])){
+                        return 'error code';
+                }
+
+                $config = config('SocialNetwork');
+
+                $config_data = $config->get_data("twitch");
+
+                $params = http_build_query(
+                        array(
+                                'client_id' => $config_data['id'],
+                                'client_secret' => $config_data['secret'],
+                                'grant_type' => 'authorization_code',
+                                'code' => $_GET['code'],
+                                'redirect_uri' => $config_data['url']
+                        )
+                );
+
+                $opts = array('http' =>
+                        array(
+                                'method'  => 'POST',
+                                'header'  => 'Content-Type: application/x-www-form-urlencoded',
+                                'content' => $params
+                        )
+                );
+
+                $context  = stream_context_create($opts);
+                
+                $token = json_decode(file_get_contents('https://id.twitch.tv/oauth2/token', false, $context), true);
+
+                var_dump($token);
         }
 }
