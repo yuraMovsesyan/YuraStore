@@ -37,6 +37,17 @@ class Authorization extends Controller
                 );
                 echo "<a target='_blank' href='https://id.twitch.tv/oauth2/authorize?".http_build_query($params)."' >twitch login</a>";
 
+                echo "<br />";
+                //github link
+                $config_data = $config->get_data("github");
+                $params = array(
+                        'client_id' => $config_data['id'],
+                        'redirect_uri' => $config_data['url'],
+                        'response_type' => 'code',
+                        'scope' => ''
+                );
+                echo "<a target='_blank' href='https://github.com/login/oauth/authorize?".http_build_query($params)."' >github login</a>";
+
 	}
 
         public function facebook()
@@ -170,6 +181,60 @@ class Authorization extends Controller
                 $headers[] = 'Accept: application/json';
                 
                 $headers[] = 'Client-ID: '.$config_data['id'];
+
+                $headers[] = 'Authorization: Bearer ' . $token['access_token'];
+
+                curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+                $response = curl_exec($ch);
+                
+                $user = json_decode($response, true);
+
+                echo "<pre>";
+                var_dump($user);
+                echo "</pre>";
+        }
+
+        public function github()
+        {
+                if (!isset($_GET['code'])){
+                        return 'error code';
+                }
+
+                $config = config('SocialNetwork');
+
+                $config_data = $config->get_data("github");
+
+                $params = http_build_query(
+                        array(
+                                'client_id' => $config_data['id'],
+                                'client_secret' => $config_data['secret'],
+                                'code' => $_GET['code'],
+                                'redirect_uri' => $config_data['url']
+                        )
+                );
+
+                $opts = array('http' =>
+                        array(
+                                'method'  => 'POST',
+                                'header'  => 'Content-Type: application/x-www-form-urlencoded',
+                                'content' => $params
+                        )
+                );
+
+                $context  = stream_context_create($opts);
+                
+                $token = json_decode(file_get_contents('https://github.com/login/oauth/access_token', false, $context), true);
+
+                var_dump($token);
+
+                $ch = curl_init('https://api.github.com/user');
+                curl_setopt($ch, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+
+                $response = curl_exec($ch);
+
+                $headers[] = 'Accept: application/json';
 
                 $headers[] = 'Authorization: Bearer ' . $token['access_token'];
 
