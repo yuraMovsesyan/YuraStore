@@ -50,6 +50,15 @@ class Authorization extends Controller
 
 	}
 
+        private function authorization($user)
+        {
+                echo "<pre>";
+                var_dump($user);
+                echo "</pre>";
+
+                echo "<img src='".$user['avatar']."' />";
+        }
+
         public function facebook()
 	{
                 if (!isset($_GET['code'])){
@@ -75,6 +84,16 @@ class Authorization extends Controller
                 echo "<pre>";
                 var_dump($data);
                 echo "</pre>";
+
+                $user = [
+                        'social_network'  => 'facebook',
+                        'social_id'  => $data['id'],
+                        'name'  => $data['name'],
+                        'email'  => $data['email'],
+                        'avatar'  => $data['avatar'],
+                ];
+
+                $this->authorization($user);
         }
 
         public function discord()
@@ -229,7 +248,9 @@ class Authorization extends Controller
                                 $info = json_decode($info, true);
                  
                                 if (!empty($info['id'])) {
-                                        print_r($info);
+                                        echo "<pre>";
+                                        var_dump($info);
+                                        echo "</pre>";
                                 }
                         } 
                 }
