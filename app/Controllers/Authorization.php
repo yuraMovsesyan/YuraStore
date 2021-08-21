@@ -13,46 +13,45 @@ class Authorization extends Controller
                         session()->set([ 'return_point_url' => $_GET['url']]);
                 }
 
-                var_dump(session()->get());
+                if (!isset($_GET['social'])) return "<a href='".session()->get('return_point_url')."'></a>social network selection error";
+
                 $config = config('SocialNetwork');
+                
+                if ($_GET['social'] == 'facebook'){
+                        $config_data = $config->get_data("facebook");
+                        return redirect()->to("https://www.facebook.com/v11.0/dialog/oauth?client_id=".$config_data['id']."&redirect_uri=".$config_data['url']."&response_type=code&scope=public_profile,email");
+                }
 
-                //facebook link
-                $config_data = $config->get_data("facebook");
-                echo "<a target='_blank' href='https://www.facebook.com/v11.0/dialog/oauth?client_id=".$config_data['id']."&redirect_uri=".$config_data['url']."&response_type=code&scope=public_profile,email' >FB login</a>";
-
-                echo "<br />";
-                //discord link
-                $config_data = $config->get_data("discord");
-                $params = array(
-                        'client_id' => $config_data['id'],
-                        'redirect_uri' => $config_data['url'],
-                        'response_type' => 'code',
-                        'scope' => 'identify email'
-                );
-                echo "<a target='_blank' href='https://discord.com/api/oauth2/authorize?".http_build_query($params)."' >DISCORD login</a>";
-
-                echo "<br />";
-                //twitch link
-                $config_data = $config->get_data("twitch");
-                $params = array(
-                        'client_id' => $config_data['id'],
-                        'redirect_uri' => $config_data['url'],
-                        'response_type' => 'code',
-                        'scope' => 'user:edit user:read:email'
-                );
-                echo "<a target='_blank' href='https://id.twitch.tv/oauth2/authorize?".http_build_query($params)."' >twitch login</a>";
-
-                echo "<br />";
-                //github link
-                $config_data = $config->get_data("github");
-                $params = array(
-                        'client_id' => $config_data['id'],
-                        'redirect_uri' => $config_data['url'],
-                        'response_type' => 'code',
-                        'scope' => ''
-                );
-                echo "<a target='_blank' href='https://github.com/login/oauth/authorize?".http_build_query($params)."' >github login</a>";
-
+                if ($_GET['social'] == 'discord'){
+                        $config_data = $config->get_data("discord");
+                        $params = array(
+                                'client_id' => $config_data['id'],
+                                'redirect_uri' => $config_data['url'],
+                                'response_type' => 'code',
+                                'scope' => 'identify email'
+                        );
+                        return redirect()->to("https://discord.com/api/oauth2/authorize?".http_build_query($params));
+                }
+                if ($_GET['social'] == 'twitch'){
+                        $config_data = $config->get_data("twitch");
+                        $params = array(
+                                'client_id' => $config_data['id'],
+                                'redirect_uri' => $config_data['url'],
+                                'response_type' => 'code',
+                                'scope' => 'user:edit user:read:email'
+                        );
+                        return redirect()->to("https://id.twitch.tv/oauth2/authorize?".http_build_query($params));
+                }
+                if ($_GET['social'] == 'github'){
+                        $config_data = $config->get_data("github");
+                        $params = array(
+                                'client_id' => $config_data['id'],
+                                'redirect_uri' => $config_data['url'],
+                                'response_type' => 'code',
+                                'scope' => ''
+                        );
+                        return redirect()->to("https://github.com/login/oauth/authorize?".http_build_query($params));
+                }
 	}
 
         private function authorization($user)
@@ -87,19 +86,17 @@ class Authorization extends Controller
                 if (session()->has('return_point_url'))
                         $return_point_url = session()->get('return_point_url');
                 else
-                        $return_point_url = 'https://google.com';
+                        $return_point_url = base_url();
                 
-                var_dump($return_point_url);
-
                 header ('Location: '.$return_point_url);
                 exit();
         }
 
         public function exit(){
-                if (session()->has('return_point_url'))
-                        $return_point_url = session()->get('return_point_url');
+                if (isset($_GET['url']))
+                        $return_point_url = $_GET['url'];
                 else
-                        $return_point_url = 'https://google.com';
+                        $return_point_url = base_url();
                 session()->destroy();
                 return redirect()->to($return_point_url);
         }

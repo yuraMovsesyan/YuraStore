@@ -266,7 +266,7 @@
                                                                         <li class="uk-nav-divider">
                                                                         </li>
                                                                         <li>
-                                                                                <a href="/login/exit">Выйти</a>
+                                                                                <a href="<?php echo base_url().'/exit?url='.base_url(uri_string()); ?>">Выйти</a>
                                                                         </li>
                                                                 </ul>
                                                         </div>
@@ -279,14 +279,13 @@
                                                                         <button class="uk-modal-close-default" type="button" uk-close></button>
                                                                         <div class="uk-flex-middle" uk-grid>
                                                                                 <div class="uk-width-2-3@m uk-width-2-3@s uk-visible@s">
-                                                                                        
                                                                                         <img src="https://cdn.dribbble.com/users/1378759/screenshots/4799608/p-logo.png" alt="Image">
                                                                                 </div>
                                                                                 <div class="uk-width-1-3@m uk-width-1-3@s uk-flex-first">
-                                                                                        <a class="uk-button uk-button-default uk-button-large uk-width-1-1 uk-margin-small-bottom uk-text-left uk-padding-remove" href="<?php echo base_url()."/authorization?url=".base_url(uri_string()); ?>"><span class="uk-margin-left uk-margin-right" uk-icon="facebook"></span>Facebook</a>
-                                                                                        <a class="uk-button uk-button-default uk-button-large uk-width-1-1 uk-margin-small-bottom uk-text-left uk-padding-remove" href=""><span class="uk-margin-left uk-margin-right" uk-icon="google"></span>Google</a>
-                                                                                        <a class="uk-button uk-button-default uk-button-large uk-width-1-1 uk-margin-small-bottom uk-text-left uk-padding-remove" href=""><span class="uk-margin-left uk-margin-right" uk-icon="twitter"></span>Twitter</a>
-                                                                                        <a class="uk-button uk-button-default uk-button-large uk-width-1-1 uk-margin-bottom-remove uk-text-left uk-padding-remove" href=""><span class="uk-margin-left uk-margin-right" uk-icon="discord"></span>Discord</a>
+                                                                                        <a class="uk-button uk-button-default uk-button-large uk-width-1-1 uk-margin-small-bottom uk-text-left uk-padding-remove" href="<?php echo base_url()."/authorization?url=".base_url(uri_string())."&social=facebook"; ?>"><span class="uk-margin-left uk-margin-right" uk-icon="facebook"></span>Facebook</a>
+                                                                                        <a class="uk-button uk-button-default uk-button-large uk-width-1-1 uk-margin-small-bottom uk-text-left uk-padding-remove" href="<?php echo base_url()."/authorization?url=".base_url(uri_string())."&social=github"; ?>"><span class="uk-margin-left uk-margin-right" uk-icon="github"></span>GitHub</a>
+                                                                                        <a class="uk-button uk-button-default uk-button-large uk-width-1-1 uk-margin-small-bottom uk-text-left uk-padding-remove" href="<?php echo base_url()."/authorization?url=".base_url(uri_string())."&social=twitch"; ?>"><span class="uk-margin-left uk-margin-right" uk-icon="twitch"></span>Twitch</a>
+                                                                                        <a class="uk-button uk-button-default uk-button-large uk-width-1-1 uk-margin-bottom-remove uk-text-left uk-padding-remove" href="<?php echo base_url()."/authorization?url=".base_url(uri_string())."&social=discord"; ?>"><span class="uk-margin-left uk-margin-right" uk-icon="discord"></span>Discord</a>
                                                                                 </div>
                                                                         </div>
                                                                 </div>
