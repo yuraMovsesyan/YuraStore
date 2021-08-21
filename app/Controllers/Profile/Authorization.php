@@ -22,7 +22,7 @@ class Authorization extends Controller
                         'client_id' => $config_data['id'],
                         'redirect_uri' => $config_data['url'],
                         'response_type' => 'code',
-                        'scope' => 'identify guilds'
+                        'scope' => 'identify email'
                 );
                 echo "<a target='_blank' href='https://discord.com/api/oauth2/authorize?".http_build_query($params)."' >DISCORD login</a>";
 
@@ -144,16 +144,24 @@ class Authorization extends Controller
 
                 $response = curl_exec($ch);
                 
-                $user = json_decode($response, true);
+                $data = json_decode($response, true);
 
                 echo "<pre>";
-                var_dump($user);
+                var_dump($data);
                 echo "</pre>";
 
-                echo "<img src='https://cdn.discordapp.com/avatars/".$user['id']."/".$user['avatar']."'>";
+                $data['avatar'] = 'https://cdn.discordapp.com/avatars/'.$data['id'].'/'.$data['avatar'];
 
 
+                $user = [
+                        'social_network'  => 'discord',
+                        'social_id'  => $data['id'],
+                        'name'  => $data['username'],
+                        'email'  => $data['email'],
+                        'avatar'  => $data['avatar'],
+                ];
 
+                $this->authorization($user);
 
         }
 
