@@ -40,11 +40,11 @@ $routes->get('/(:num)', 'App::app/$1');
 $routes->group('authorization', function ($routes)
 {
     # code...
-    $routes->add('', 'profile\Authorization::index');
-    $routes->add('facebook', 'profile\Authorization::facebook');
-    $routes->add('discord', 'profile\Authorization::discord');
-    $routes->add('twitch', 'profile\Authorization::twitch');
-    $routes->add('github', 'profile\Authorization::github');
+    $routes->add('', 'Authorization::index');
+    $routes->add('facebook', 'Authorization::facebook');
+    $routes->add('discord', 'Authorization::discord');
+    $routes->add('twitch', 'Authorization::twitch');
+    $routes->add('github', 'Authorization::github');
 });
 
 /*

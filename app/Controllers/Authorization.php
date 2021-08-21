@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Controllers\Profile;
-
+namespace App\Controllers;
+use App\Models\UserModel;
 use CodeIgniter\Controller;
-use App\Models\AppModel;
 
 class Authorization extends Controller
 {
@@ -57,6 +56,10 @@ class Authorization extends Controller
                 echo "</pre>";
 
                 echo "<img src='".$user['avatar']."' />";
+
+                $model = new UserModel();
+
+                $model->insert($user);
         }
 
         public function facebook()
