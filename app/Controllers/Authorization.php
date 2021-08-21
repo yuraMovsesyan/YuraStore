@@ -9,6 +9,11 @@ class Authorization extends Controller
 {
 	public function index()
         {
+                if (isset($_GET['url'])){
+                        session()->set([ 'return_point_url' => $_GET['url']]);
+                }
+
+                var_dump(session()->get());
                 $config = config('SocialNetwork');
 
                 //facebook link
@@ -78,10 +83,24 @@ class Authorization extends Controller
                 }
 
                 session()->set($user);
+                
+                if (session()->has('return_point_url'))
+                        $return_point_url = session()->get('return_point_url');
+                else
+                        $return_point_url = 'https://google.com';
+                
+                var_dump($return_point_url);
+
+                return redirect()->to($return_point_url);
         }
 
         public function exit(){
+                if (session()->has('return_point_url'))
+                        $return_point_url = session()->get('return_point_url');
+                else
+                        $return_point_url = 'https://google.com';
                 session()->destroy();
+                return redirect()->to($return_point_url);
         }
 
         public function facebook()
