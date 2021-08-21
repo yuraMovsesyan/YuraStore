@@ -76,9 +76,12 @@ class Authorization extends Controller
                         $model->insert($user);
                         echo "insert";
                 }
-                
 
-                
+                session()->set($user);
+        }
+
+        public function exit(){
+                session()->destroy();
         }
 
         public function facebook()
