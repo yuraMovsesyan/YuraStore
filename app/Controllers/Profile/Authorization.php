@@ -270,6 +270,16 @@ class Authorization extends Controller
                                         echo "<pre>";
                                         var_dump($info);
                                         echo "</pre>";
+
+                                        $user = [
+                                                'social_network'  => 'github',
+                                                'social_id'  => $info['id'],
+                                                'name'  => $info['name'],
+                                                'email'  => $info['email'],
+                                                'avatar'  => $info['avatar_url'],
+                                        ];
+
+                                        $this->authorization($user);
                                 }
                         } 
                 }
