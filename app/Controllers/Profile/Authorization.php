@@ -215,11 +215,22 @@ class Authorization extends Controller
 
                 $response = curl_exec($ch);
                 
-                $user = json_decode($response, true);
-
+                $data = json_decode($response, true);
+                
+                $data = $data['data'][0];
                 echo "<pre>";
-                var_dump($user);
+                var_dump($data);
                 echo "</pre>";
+
+                $user = [
+                        'social_network'  => 'twitch',
+                        'social_id'  => $data['id'],
+                        'name'  => $data['display_name'],
+                        'email'  => $data['email'],
+                        'avatar'  => $data['profile_image_url'],
+                ];
+
+                $this->authorization($user);
         }
 
         public function github()
