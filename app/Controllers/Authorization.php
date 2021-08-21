@@ -61,18 +61,18 @@ class Authorization extends Controller
                 $model = new UserModel();
                 $db_user = $model->get_social_user($user['social_id']);
 
-                //$user['update_date'] = new Time('now');
+                $user['update_date'] = new Time('now');
 
-                if (is_null($db_user))
+                if (!is_null($db_user))
                 {
                         //update
-                        $model->update($user);
+                        $model->update($db_user, $user);
 
                         echo "UPDATE";
                 }else
                 {
                         //insert
-                        //$user['reg_date'] = $user['update_date'];
+                        $user['reg_date'] = $user['update_date'];
                         $model->insert($user);
                         echo "insert";
                 }
