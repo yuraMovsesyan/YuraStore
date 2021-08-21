@@ -91,7 +91,8 @@ class Authorization extends Controller
                 
                 var_dump($return_point_url);
 
-                return redirect()->to($return_point_url);
+                header ('Location: '.$return_point_url);
+                exit();
         }
 
         public function exit(){
