@@ -3,6 +3,7 @@
 namespace App\Controllers;
 use App\Models\UserModel;
 use CodeIgniter\Controller;
+use CodeIgniter\I18n\Time;
 
 class Authorization extends Controller
 {
@@ -58,8 +59,26 @@ class Authorization extends Controller
                 echo "<img src='".$user['avatar']."' />";
 
                 $model = new UserModel();
+                $db_user = $model->get_social_user($user['social_id']);
 
-                $model->insert($user);
+                //$user['update_date'] = new Time('now');
+
+                if (is_null($db_user))
+                {
+                        //update
+                        $model->update($user);
+
+                        echo "UPDATE";
+                }else
+                {
+                        //insert
+                        //$user['reg_date'] = $user['update_date'];
+                        $model->insert($user);
+                        echo "insert";
+                }
+                
+
+                
         }
 
         public function facebook()
