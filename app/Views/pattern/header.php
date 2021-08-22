@@ -247,7 +247,7 @@
                                                                 </div>
                                                         </div>
                                                         
-                                                        <?php  if (session()->has('id')): ?>
+                                                        <?php  if (session()->has('social_id')): ?>
                                                         <a class="uk-navbar-item uk-link-muted tm-navbar-button" href="#"
                                                         uk-icon="user"></a>
                                                         <div class="uk-padding-small uk-margin-remove uk-background-secondary" uk-dropdown="pos: bottom-right; offset: -10; delay-hide: 200;"
@@ -266,12 +266,32 @@
                                                                         <li class="uk-nav-divider">
                                                                         </li>
                                                                         <li>
-                                                                                <a href="/login/exit">Выйти</a>
+                                                                                <a href="<?php echo base_url().'/exit?url='.base_url(uri_string()); ?>">Выйти</a>
                                                                         </li>
                                                                 </ul>
                                                         </div>
                                                         <?php else: ?>
-                                                            <a class="uk-navbar-item uk-link-muted tm-navbar-button" href="/login" uk-icon="sign-in"></a>
+                                                        <a class="uk-navbar-item uk-link-muted tm-navbar-button" href="#modal-example" uk-toggle uk-icon="sign-in"></a>
+
+                                                        <div id="modal-example" uk-modal>
+                                                                <div class="uk-modal-dialog uk-modal-body uk-border-rounded uk-background-secondary uk-light">
+                                                                        <h2 class="uk-modal-title uk-text-left">Авторизация</h2>
+                                                                        <button class="uk-modal-close-default" type="button" uk-close></button>
+                                                                        <div class="uk-flex-middle" uk-grid>
+                                                                                <div class="uk-width-2-3@m uk-width-2-3@s uk-visible@s">
+                                                                                        <img src="https://cdn.dribbble.com/users/1378759/screenshots/4799608/p-logo.png" alt="Image">
+                                                                                </div>
+                                                                                <div class="uk-width-1-3@m uk-width-1-3@s uk-flex-first">
+                                                                                        <a class="uk-button uk-button-default uk-button-large uk-width-1-1 uk-margin-small-bottom uk-text-left uk-padding-remove" href="<?php echo base_url()."/authorization?url=".base_url(uri_string())."&social=facebook"; ?>"><span class="uk-margin-left uk-margin-right" uk-icon="facebook"></span>Facebook</a>
+                                                                                        <a class="uk-button uk-button-default uk-button-large uk-width-1-1 uk-margin-small-bottom uk-text-left uk-padding-remove" href="<?php echo base_url()."/authorization?url=".base_url(uri_string())."&social=github"; ?>"><span class="uk-margin-left uk-margin-right" uk-icon="github"></span>GitHub</a>
+                                                                                        <a class="uk-button uk-button-default uk-button-large uk-width-1-1 uk-margin-small-bottom uk-text-left uk-padding-remove" href="<?php echo base_url()."/authorization?url=".base_url(uri_string())."&social=twitch"; ?>"><span class="uk-margin-left uk-margin-right" uk-icon="twitch"></span>Twitch</a>
+                                                                                        <a class="uk-button uk-button-default uk-button-large uk-width-1-1 uk-margin-bottom-remove uk-text-left uk-padding-remove" href="<?php echo base_url()."/authorization?url=".base_url(uri_string())."&social=discord"; ?>"><span class="uk-margin-left uk-margin-right" uk-icon="discord"></span>Discord</a>
+                                                                                </div>
+                                                                        </div>
+                                                                </div>
+
+                                                        </div>
+
                                                         <?php endif ?>
                                                  </div>
                                         </div>
