@@ -258,7 +258,7 @@
                                                                                 <span>(2)</span></a>
                                                                         </li>
                                                                         <li>
-                                                                                <a href="#">Профиль</a>
+                                                                                <a href="<?php echo base_url('/profile'); ?>">Профиль</a>
                                                                         </li>
                                                                         <li>
                                                                                 <a href="#">Настройки</a>
