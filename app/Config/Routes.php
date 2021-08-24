@@ -37,7 +37,9 @@ $routes->get('/', 'Main::index');
 $routes->get('/app', 'Main::index');
 $routes->get('/(:num)', 'App::app/$1');
 
+//user
 $routes->get('/profile', 'User::profile');
+$routes->get('/tools', 'User::tools');
 $routes->get('/exit', 'Authorization::exit');
 
 $routes->group('authorization', function ($routes)
