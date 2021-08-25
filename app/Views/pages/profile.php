@@ -42,6 +42,30 @@
                                                 </div>
                                         </div>
                                 </div>
+                                <div class="uk-card uk-card-secondary uk-card-body">
+                                        <ul class="uk-nav-secondary uk-nav-parent-icon" uk-nav>
+                                                <li class="uk-active"><a href="#">Active</a></li>
+                                                <li class="uk-parent">
+                                                <a href="#">Parent</a>
+                                                <ul class="uk-nav-sub">
+                                                        <li><a href="#">Sub item</a></li>
+                                                        <li><a href="#">Sub item</a></li>
+                                                </ul>
+                                                </li>
+                                                <li class="uk-parent">
+                                                <a href="#">Parent</a>
+                                                <ul class="uk-nav-sub">
+                                                        <li><a href="#">Sub item</a></li>
+                                                        <li><a href="#">Sub item</a></li>
+                                                </ul>
+                                                </li>
+                                                <li class="uk-nav-header">Header</li>
+                                                <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: table"></span> Item</a></li>
+                                                <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: thumbnails"></span> Item</a></li>
+                                                <hr />
+                                                <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: trash"></span> Item</a></li>
+                                        </ul>
+                                </div>
                         </div>
                         <div class="uk-sticky-placeholder" style="height: 357px; margin: 0px;"
                         hidden="">
