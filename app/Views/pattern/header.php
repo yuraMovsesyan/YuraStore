@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" style="background: rgb(34, 34, 34);">
         
         <head>
                 <title><?= $title; ?></title>
@@ -10,7 +10,7 @@
                 <script src="https://yura.store/js/uikit-icons.min.js"></script>
         </head>
         
-        <body>
+        <body class="uk-light" >
                 <div class="uk-offcanvas-content uk-background-secondary">
                         <header>
                                 <div class="uk-navbar-container2 uk-sticky tm-navbar-container uk-background-secondary uk-light" uk-sticky="cls-active: tm-navbar-container-fixed">
