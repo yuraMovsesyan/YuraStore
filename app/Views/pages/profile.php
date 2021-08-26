@@ -1,7 +1,7 @@
 <section class="uk-section uk-section-small uk-section-secondary uk-light uk-padding-remove-bottom uk-container">
 <div class="uk-container">
         <div class="uk-grid-medium uk-grid " uk-grid="">
-                <div class="uk-width-1-1 uk-width-1-4@m tm-aside-column uk-first-column ">
+                <div class="uk-width-1-1 uk-width-1-4@m tm-aside-column uk-first-column " style="z-index: 0;">
                         <div class="uk-card uk-card-default uk-card-small tm-ignore-container uk-sticky uk-background-secondary"
                         uk-sticky="offset: 90; bottom: true; media: @m; " style="">
                                 <div class="uk-card-header ">
@@ -42,116 +42,168 @@
                                                 </div>
                                         </div>
                                 </div>
-                                <div class="uk-card uk-card-secondary uk-card-body">
-                                        <ul class="uk-nav-secondary uk-nav-parent-icon" uk-nav>
-                                                <li class="uk-active"><a href="#">Active</a></li>
-                                                <li class="uk-parent">
-                                                <a href="#">Parent</a>
-                                                <ul class="uk-nav-sub">
-                                                        <li><a href="#">Sub item</a></li>
-                                                        <li><a href="#">Sub item</a></li>
-                                                </ul>
-                                                </li>
-                                                <li class="uk-parent">
-                                                <a href="#">Parent</a>
-                                                <ul class="uk-nav-sub">
-                                                        <li><a href="#">Sub item</a></li>
-                                                        <li><a href="#">Sub item</a></li>
-                                                </ul>
-                                                </li>
-                                                <li class="uk-nav-header">Header</li>
-                                                <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: table"></span> Item</a></li>
-                                                <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: thumbnails"></span> Item</a></li>
-                                                <hr />
-                                                <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: trash"></span> Item</a></li>
-                                        </ul>
-                                </div>
                         </div>
                         <div class="uk-sticky-placeholder" style="height: 357px; margin: 0px;"
                         hidden="">
                         </div>
                 </div>
                 <div class="uk-width-1-1 uk-width-expand@m">
-                        <div class="uk-card uk-card-default uk-card-small tm-ignore-container uk-background-secondary">
-                                <header class="uk-card-header">
-                                        <h1 class="uk-h2">
-                                                Settings
-                                        </h1>
-                                </header>
-                                <div class="uk-card-body">
-                                        <form class="uk-form-stacked">
-                                                <div class="uk-grid-medium uk-child-width-1-1 uk-grid uk-grid-stack" uk-grid="">
-                                                        <fieldset class="uk-fieldset uk-first-column">
-                                                                <legend class="uk-h4">
-                                                                        Email
-                                                                </legend>
-                                                                <div class="uk-grid-small uk-child-width-1-1 uk-grid uk-grid-stack" uk-grid="">
-                                                                        <?php  if (!is_null($email)): ?>
-                                                                                <div class="uk-first-column">
-                                                                                        <label>
-                                                                                                <div class="uk-form-label">
-                                                                                                        Current Email
+                        <ul class="uk-subnav uk-subnav-pill" uk-switcher="animation: uk-animation-slide-left-medium, uk-animation-slide-right-medium">
+                                <li><a href="#">Settings</a></li>
+                                <li><a href="#">Apps</a></li>
+                        </ul>
+                        <ul class="uk-switcher">
+                                <li>
+                                        <div class="uk-card uk-card-default uk-card-small tm-ignore-container uk-background-secondary">
+                                                <header class="uk-card-header">
+                                                        <h1 class="uk-h2">
+                                                                Settings
+                                                        </h1>
+                                                </header>
+                                                <div class="uk-card-body">
+                                                        <form class="uk-form-stacked">
+                                                                <div class="uk-grid-medium uk-child-width-1-1 uk-grid uk-grid-stack" uk-grid="">
+                                                                        <fieldset class="uk-fieldset uk-first-column">
+                                                                                <legend class="uk-h4">
+                                                                                        Email
+                                                                                </legend>
+                                                                                <div class="uk-grid-small uk-child-width-1-1 uk-grid uk-grid-stack" uk-grid="">
+                                                                                        <?php  if (!is_null($email)): ?>
+                                                                                                <div class="uk-first-column">
+                                                                                                        <label>
+                                                                                                                <div class="uk-form-label">
+                                                                                                                        Current Email
+                                                                                                                </div>
+                                                                                                                <input class="uk-input " type="email" value="<?= $email; ?>"
+                                                                                                                disabled="">
+                                                                                                        </label>
                                                                                                 </div>
-                                                                                                <input class="uk-input " type="email" value="<?= $email; ?>"
-                                                                                                disabled="">
-                                                                                        </label>
+                                                                                        <?php endif; ?>
+                                                                                        <div class="uk-grid-margin uk-first-column">
+                                                                                                <label>
+                                                                                                        <div class="uk-form-label">
+                                                                                                                New Email
+                                                                                                        </div>
+                                                                                                        <input class="uk-input" type="email">
+                                                                                                </label>
+                                                                                        </div>
+                                                                                        <div class="uk-grid-margin uk-first-column uk-background-secondary">
+                                                                                                <button class="uk-button uk-button-default uk-button-small" title="Log out">
+                                                                                                SAVE
+                                                                                                </button>
+                                                                                        </div>
                                                                                 </div>
-                                                                        <?php endif; ?>
-                                                                        <div class="uk-grid-margin uk-first-column">
-                                                                                <label>
-                                                                                        <div class="uk-form-label">
-                                                                                                New Email
+                                                                        </fieldset>
+                                                                        <fieldset class="uk-fieldset uk-grid-margin uk-first-column">
+                                                                                <legend class="uk-h4">
+                                                                                        Password
+                                                                                </legend>
+                                                                                <div class="uk-grid-small uk-child-width-1-1 uk-grid uk-grid-stack" uk-grid="">
+                                                                                        <div class="uk-first-column">
+                                                                                                <label>
+                                                                                                        <div class="uk-form-label">
+                                                                                                                Current Password
+                                                                                                        </div>
+                                                                                                        <input class="uk-input " type="password">
+                                                                                                </label>
                                                                                         </div>
-                                                                                        <input class="uk-input" type="email">
-                                                                                </label>
-                                                                        </div>
-                                                                        <div class="uk-grid-margin uk-first-column uk-background-secondary">
-                                                                                <button class="uk-button uk-button-default uk-button-small" title="Log out">
-                                                                                SAVE
-                                                                                </button>
-                                                                        </div>
+                                                                                        <div class="uk-grid-margin uk-first-column">
+                                                                                                <label>
+                                                                                                        <div class="uk-form-label">
+                                                                                                                New Password
+                                                                                                        </div>
+                                                                                                        <input class="uk-input " type="password">
+                                                                                                </label>
+                                                                                        </div>
+                                                                                        <div class="uk-grid-margin uk-first-column">
+                                                                                                <label>
+                                                                                                        <div class="uk-form-label">
+                                                                                                                Confirm Password
+                                                                                                        </div>
+                                                                                                        <input class="uk-input " type="password">
+                                                                                                </label>
+                                                                                        </div>
+                                                                                        <div class="uk-grid-margin uk-first-column">
+                                                                                                <button class="uk-button uk-button-default uk-button-small" title="Log out">
+                                                                                                        SAVE
+                                                                                                </button>
+                                                                                        </div>
+                                                                                </div>
+                                                                        </fieldset>
                                                                 </div>
-                                                        </fieldset>
-                                                        <fieldset class="uk-fieldset uk-grid-margin uk-first-column">
-                                                                <legend class="uk-h4">
-                                                                        Password
-                                                                </legend>
-                                                                <div class="uk-grid-small uk-child-width-1-1 uk-grid uk-grid-stack" uk-grid="">
-                                                                        <div class="uk-first-column">
-                                                                                <label>
-                                                                                        <div class="uk-form-label">
-                                                                                                Current Password
-                                                                                        </div>
-                                                                                        <input class="uk-input " type="password">
-                                                                                </label>
-                                                                        </div>
-                                                                        <div class="uk-grid-margin uk-first-column">
-                                                                                <label>
-                                                                                        <div class="uk-form-label">
-                                                                                                New Password
-                                                                                        </div>
-                                                                                        <input class="uk-input " type="password">
-                                                                                </label>
-                                                                        </div>
-                                                                        <div class="uk-grid-margin uk-first-column">
-                                                                                <label>
-                                                                                        <div class="uk-form-label">
-                                                                                                Confirm Password
-                                                                                        </div>
-                                                                                        <input class="uk-input " type="password">
-                                                                                </label>
-                                                                        </div>
-                                                                        <div class="uk-grid-margin uk-first-column">
-                                                                                <button class="uk-button uk-button-default uk-button-small" title="Log out">
-                                                                                        SAVE
-                                                                                </button>
-                                                                        </div>
-                                                                </div>
-                                                        </fieldset>
+                                                        </form>
                                                 </div>
-                                        </form>
-                                </div>
-                        </div>
+                                        </div>
+                                </li>
+                                
+                                <li>
+                                        <div class="uk-card uk-card-default uk-card-small tm-ignore-container uk-background-secondary">
+                                                <header class="uk-card-header">
+                                                        <h1 class="uk-h2">
+                                                                Apps
+                                                        </h1>
+                                                </header>
+                                                <div class="uk-card-body  uk-light">
+                                                        <ul uk-accordion>
+                                                                <li>
+                                                                        <a class="uk-accordion-title" href="#">New apps</a>
+                                                                        <form class="uk-accordion-content">
+                                                                                <fieldset class="uk-fieldset">
+
+                                                                                        <legend class="uk-legend">Legend</legend>
+
+                                                                                        <div class="uk-margin">
+                                                                                        <input class="uk-input" type="text" placeholder="Input">
+                                                                                        </div>
+
+                                                                                        <div class="uk-margin">
+                                                                                        <select class="uk-select">
+                                                                                                <option>Option 01</option>
+                                                                                                <option>Option 02</option>
+                                                                                        </select>
+                                                                                        </div>
+
+                                                                                        <div class="uk-margin">
+                                                                                        <textarea class="uk-textarea" rows="5" placeholder="Textarea" style="resize: vertical; min-height: 50px;"></textarea>
+                                                                                        </div>
+
+                                                                                        <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
+                                                                                        <label><input class="uk-radio" type="radio" name="radio2" checked> A</label>
+                                                                                        <label><input class="uk-radio" type="radio" name="radio2"> B</label>
+                                                                                        </div>
+
+                                                                                        <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
+                                                                                        <label><input class="uk-checkbox" type="checkbox" checked> A</label>
+                                                                                        <label><input class="uk-checkbox" type="checkbox"> B</label>
+                                                                                        </div>
+
+                                                                                        <div class="uk-margin">
+                                                                                        <input class="uk-range" type="range" value="2" min="0" max="10" step="0.1">
+                                                                                        </div>
+
+                                                                                </fieldset>
+                                                                        </form>
+                                                                </li>
+                                                                <li class="uk-open">
+                                                                        <a class="uk-accordion-title" href="#">list</a>
+                                                                        <div class="uk-accordion-content">
+                                                                                <ul class="uk-list uk-list-divider">
+                                                                                        <li><a href="#">New apps</a></li>
+                                                                                        <li><a href="#">New apps</a></li>
+                                                                                        <li><a href="#">New apps</a></li>
+                                                                                        <li><a href="#">New apps</a></li>
+                                                                                </ul>
+                                                                        </div>
+                                                                </li>
+                                                        </ul>
+                                                        
+                                                </div>
+                                        </div>
+                                </li>
+                        </ul>
+                        
+
+                        
                 </div>
         </div>
 </div>
