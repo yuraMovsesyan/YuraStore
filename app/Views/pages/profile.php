@@ -150,35 +150,62 @@
                                                                         <form class="uk-accordion-content">
                                                                                 <fieldset class="uk-fieldset">
 
-                                                                                        <legend class="uk-legend">Legend</legend>
+                                                                                        <div class="uk-margin">
+                                                                                                <input class="uk-input" type="text" placeholder="Название">
+                                                                                        </div>
+
+                                                                                        <div class="uk-grid-small" uk-grid>
+                                                                                                <div class=" uk-width-1-2@m" >
+                                                                                                        <input class="uk-input" type="url" placeholder="Ссылка на обложку">
+                                                                                                </div>
+
+                                                                                                <div class=" uk-width-1-2@m">
+                                                                                                        <input class="uk-input" type="url" placeholder="Ссылка на видео">
+                                                                                                </div>
+
+                                                                                                <div class=" uk-width-1-2@m" >
+                                                                                                        <input class="uk-input" type="url" placeholder="Ссылка на изображение 1">
+                                                                                                </div>
+
+                                                                                                <div class=" uk-width-1-2@m">
+                                                                                                        <input class="uk-input" type="url" placeholder="Ссылка на изображение 2">
+                                                                                                </div>
+
+                                                                                                <div class=" uk-width-1-2@m" >
+                                                                                                        <input class="uk-input" type="url" placeholder="Ссылка на изображение 3">
+                                                                                                </div>
+
+                                                                                                <div class=" uk-width-1-2@m">
+                                                                                                        <input class="uk-input" type="url" placeholder="Ссылка на изображение 4">
+                                                                                                </div>
+                                                                                        </div>
+
+                                                                                        
 
                                                                                         <div class="uk-margin">
-                                                                                        <input class="uk-input" type="text" placeholder="Input">
+                                                                                                <textarea class="uk-textarea" rows="5" placeholder="Описание" style="resize: vertical; min-height: 50px;"></textarea>
+                                                                                        </div>
+
+                                                                                        <div class="uk-grid-small" uk-grid>
+                                                                                                <div class=" uk-width-1-2@m" >
+                                                                                                        <input class="uk-input" type="url" placeholder="Ссылка на windows">
+                                                                                                </div>
+
+                                                                                                <div class=" uk-width-1-2@m">
+                                                                                                        <input class="uk-input" type="url" placeholder="Ссылка на linux">
+                                                                                                </div>
+
+                                                                                                <div class=" uk-width-1-2@m" >
+                                                                                                        <input class="uk-input" type="url" placeholder="Ссылка на android">
+                                                                                                </div>
+
+                                                                                                <div class=" uk-width-1-2@m">
+                                                                                                        <input class="uk-input" type="url" placeholder="Ссылка на xbox">
+                                                                                                </div>
                                                                                         </div>
 
                                                                                         <div class="uk-margin">
-                                                                                        <select class="uk-select">
-                                                                                                <option>Option 01</option>
-                                                                                                <option>Option 02</option>
-                                                                                        </select>
-                                                                                        </div>
-
-                                                                                        <div class="uk-margin">
-                                                                                        <textarea class="uk-textarea" rows="5" placeholder="Textarea" style="resize: vertical; min-height: 50px;"></textarea>
-                                                                                        </div>
-
-                                                                                        <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
-                                                                                        <label><input class="uk-radio" type="radio" name="radio2" checked> A</label>
-                                                                                        <label><input class="uk-radio" type="radio" name="radio2"> B</label>
-                                                                                        </div>
-
-                                                                                        <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
-                                                                                        <label><input class="uk-checkbox" type="checkbox" checked> A</label>
-                                                                                        <label><input class="uk-checkbox" type="checkbox"> B</label>
-                                                                                        </div>
-
-                                                                                        <div class="uk-margin">
-                                                                                        <input class="uk-range" type="range" value="2" min="0" max="10" step="0.1">
+                                                                                                <button class="uk-input" type="submit" value="save">Сохранить</button>
                                                                                         </div>
 
                                                                                 </fieldset>
