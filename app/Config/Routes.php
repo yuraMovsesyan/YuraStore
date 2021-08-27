@@ -42,6 +42,15 @@ $routes->get('/profile', 'User::profile');
 $routes->get('/tools', 'User::tools');
 $routes->get('/exit', 'Authorization::exit');
 
+$routes->group('api', function ($routes)
+{
+    $routes->add('', 'Main::index');
+    $routes->group('apps', function ($routes)
+    {
+        $routes->add('add', 'App::add');
+    });
+});
+
 $routes->group('authorization', function ($routes)
 {
     # code...

@@ -21,4 +21,14 @@ class App extends Controller
 		echo view('pages/comments', $data);
 		echo view('pattern/footer');
     }
+
+    public function add(){
+        $data = $_GET;
+        if (isset($data)){
+            echo "<pre>";
+            var_dump($data);
+            echo "</pre>";
+        }
+        return "add";
+    }
 }

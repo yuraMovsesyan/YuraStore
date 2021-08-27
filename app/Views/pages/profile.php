@@ -147,60 +147,60 @@
                                                         <ul uk-accordion>
                                                                 <li>
                                                                         <a class="uk-accordion-title" href="#">New apps</a>
-                                                                        <form class="uk-accordion-content">
+                                                                        <form class="uk-accordion-content" action="<?php echo base_url('api/apps/add'); ?>">
                                                                                 <fieldset class="uk-fieldset">
 
                                                                                         <div class="uk-margin">
-                                                                                                <input class="uk-input" type="text" placeholder="Название">
+                                                                                                <input class="uk-input" type="text" name="title" placeholder="Название">
                                                                                         </div>
 
                                                                                         <div class="uk-grid-small" uk-grid>
                                                                                                 <div class=" uk-width-1-2@m" >
-                                                                                                        <input class="uk-input" type="url" placeholder="Ссылка на обложку">
+                                                                                                        <input class="uk-input" type="url" name="imgs[]" placeholder="Ссылка на обложку">
                                                                                                 </div>
 
                                                                                                 <div class=" uk-width-1-2@m">
-                                                                                                        <input class="uk-input" type="url" placeholder="Ссылка на видео">
+                                                                                                        <input class="uk-input" type="url" name="video" placeholder="Ссылка на видео">
                                                                                                 </div>
 
                                                                                                 <div class=" uk-width-1-2@m" >
-                                                                                                        <input class="uk-input" type="url" placeholder="Ссылка на изображение 1">
+                                                                                                        <input class="uk-input" type="url" name="imgs[]" placeholder="Ссылка на изображение 1">
                                                                                                 </div>
 
                                                                                                 <div class=" uk-width-1-2@m">
-                                                                                                        <input class="uk-input" type="url" placeholder="Ссылка на изображение 2">
+                                                                                                        <input class="uk-input" type="url" name="imgs[]" placeholder="Ссылка на изображение 2">
                                                                                                 </div>
 
                                                                                                 <div class=" uk-width-1-2@m" >
-                                                                                                        <input class="uk-input" type="url" placeholder="Ссылка на изображение 3">
+                                                                                                        <input class="uk-input" type="url" name="imgs[]" placeholder="Ссылка на изображение 3">
                                                                                                 </div>
 
                                                                                                 <div class=" uk-width-1-2@m">
-                                                                                                        <input class="uk-input" type="url" placeholder="Ссылка на изображение 4">
+                                                                                                        <input class="uk-input" type="url" name="imgs[]" placeholder="Ссылка на изображение 4">
                                                                                                 </div>
                                                                                         </div>
 
                                                                                         
 
                                                                                         <div class="uk-margin">
-                                                                                                <textarea class="uk-textarea" rows="5" placeholder="Описание" style="resize: vertical; min-height: 50px;"></textarea>
+                                                                                                <textarea class="uk-textarea" rows="5" placeholder="Описание" name="description" style="resize: vertical; min-height: 50px;"></textarea>
                                                                                         </div>
 
                                                                                         <div class="uk-grid-small" uk-grid>
                                                                                                 <div class=" uk-width-1-2@m" >
-                                                                                                        <input class="uk-input" type="url" placeholder="Ссылка на windows">
+                                                                                                        <input class="uk-input" type="url" name="download[windows]" placeholder="Ссылка на windows">
                                                                                                 </div>
 
                                                                                                 <div class=" uk-width-1-2@m">
-                                                                                                        <input class="uk-input" type="url" placeholder="Ссылка на linux">
+                                                                                                        <input class="uk-input" type="url" name="download[linux]" placeholder="Ссылка на linux">
                                                                                                 </div>
 
                                                                                                 <div class=" uk-width-1-2@m" >
-                                                                                                        <input class="uk-input" type="url" placeholder="Ссылка на android">
+                                                                                                        <input class="uk-input" type="url" name="download[android]" placeholder="Ссылка на android">
                                                                                                 </div>
 
                                                                                                 <div class=" uk-width-1-2@m">
-                                                                                                        <input class="uk-input" type="url" placeholder="Ссылка на xbox">
+                                                                                                        <input class="uk-input" type="url" name="download[xbox]" placeholder="Ссылка на xbox">
                                                                                                 </div>
                                                                                         </div>
 
