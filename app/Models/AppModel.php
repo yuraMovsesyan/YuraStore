@@ -8,7 +8,7 @@ class AppModel extends Model
 {
     protected $table = 'application';
 
-    protected $allowedFields = ['title', 'description', 'categories', 'images', 'video', 'download'];
+    protected $allowedFields = ['title', 'description', 'poster', 'categories', 'images', 'video', 'download'];
 
     public function getApps($id = FALSE)
     {

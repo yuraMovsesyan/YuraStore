@@ -9,9 +9,10 @@ class App extends Controller
 {
     public function app($id = null){
         $model = new AppModel();
-
+        $app = $model->getApps($id);
+        $app['images'] = json_decode($app['images'], true);
         $data = [
-            'content'  => $model->getApps($id),
+            'content'  => $app,
             'title' => 'Yura.Store',
         ];
 
@@ -32,8 +33,9 @@ class App extends Controller
             $app = [
                 'title' => $_GET['title'],
                 'description' => $_GET['description'],
+                'poster' => $_GET['poster'],
                 'video' => $_GET['video'],
-                'images' => $_GET['images'][0],
+                'images' => json_encode($_GET['images']),
                 'download' => $_GET['download']['windows'],
             ];
 

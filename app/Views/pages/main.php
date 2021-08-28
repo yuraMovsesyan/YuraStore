@@ -70,7 +70,7 @@
                     <a href="./<?= $value['id']; ?>" style="text-decoration: none;">
                         <div class="uk-card uk-card-default uk-border-rounded uk-card-secondary">
                             <div class="uk-card-media-top" style="padding: 0px;">
-                                <img class="uk-border-rounded" src="<?= $value['images']; ?>" alt="img" style="min-width: 100%; max-width: 100%;">
+                                <img class="uk-border-rounded" src="<?= $value['poster']; ?>" alt="img" style="min-width: 100%; max-width: 100%;">
                             </div>
                             <div class="uk-card-body">
                                 <h3 class="uk-card-title"><?= $value['title']; ?></h3>

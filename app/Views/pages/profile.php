@@ -156,7 +156,7 @@
 
                                                                                         <div class="uk-grid-small" uk-grid>
                                                                                                 <div class=" uk-width-1-2@m" >
-                                                                                                        <input class="uk-input" type="url" name="images[]" placeholder="Ссылка на обложку">
+                                                                                                        <input class="uk-input" type="url" name="poster" placeholder="Ссылка на обложку">
                                                                                                 </div>
 
                                                                                                 <div class=" uk-width-1-2@m">

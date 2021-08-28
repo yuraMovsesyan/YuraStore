@@ -9,20 +9,24 @@
                         <video src="<?= $content['video']; ?>" controls playsinline uk-video="automute: true"></video>
                     </li>
                     <?php endif ?>
-                    <li>
-                        <img src="<?= $content['images']; ?> alt="" uk-cover>
-                    </li>
-                    <li>
-                        <img src="https://i.ytimg.com/vi/N0tRHMxvXZI/maxresdefault.jpg" alt="" uk-cover>
-                    </li>
-                    <li>
-                        <img src="https://i.ytimg.com/vi/N0tRHMxvXZI/maxresdefault.jpg" alt="" uk-cover>
-                    </li>
+                    <?php foreach ($content['images'] as $key => $image): ?>
+                        <li>
+                            <img src="<?= $image ?> alt="" uk-cover>
+                        </li>
+                    <?php endforeach ?>
                 </ul>
             
                 <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
                 <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
             
+            </div>
+
+            <div class="uk-margin">
+                    <a class="uk-button uk-button-default" href="https://drive.google.com/u/0/uc?export=download&confirm=HXcQ&id=<?= $content['download']; ?>">Скачать</a>
+                    <a class="uk-button uk-button-default" href="https://drive.google.com/u/0/uc?export=download&confirm=HXcQ&id=<?= $content['download']; ?>">Скачать</a>
+                    <a class="uk-button uk-button-default" href="https://drive.google.com/u/0/uc?export=download&confirm=HXcQ&id=<?= $content['download']; ?>">Скачать</a>
+                    <a class="uk-button uk-button-default" href="https://drive.google.com/u/0/uc?export=download&confirm=HXcQ&id=<?= $content['download']; ?>">Скачать</a>
+                    <a class="uk-button uk-button-default" href="https://drive.google.com/u/0/uc?export=download&confirm=HXcQ&id=<?= $content['download']; ?>">Скачать</a>
             </div>
         </div>
         <div>
@@ -31,9 +35,7 @@
                 <div class="uk-margin">
                     <p><?= $content['description']; ?></p>
                 </div>
-                <div class="uk-margin">
-                    <p><a class="uk-button uk-button-default" href="https://drive.google.com/u/0/uc?export=download&confirm=HXcQ&id=<?= $content['download']; ?>">Скачать</a></p>
-                </div>
+                
             </fieldset>
             
         </div>
