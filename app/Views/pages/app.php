@@ -31,6 +31,31 @@
                     <a class="uk-button uk-button-default" href="https://drive.google.com/u/0/uc?export=download&confirm=HXcQ&id=<?= $content['download']; ?>">Скачать</a>
             </div>
                     -->
+            <div class="uk-margin-top uk-margin-bottom padding-remove">
+                <div class="uk-flex-middle uk-margin-bottom" uk-grid>
+                    <div class="uk-width-auto">
+                        <img class="uk-border-circle" width="70" height="70" src="https://placepic.ru/wp-content/uploads/2018/01/art-krasivyie-kartinki-Putin-politika-1331294.jpeg">
+                    </div>
+                    <div class="uk-width-expand">
+                        <h3 class="uk-card-title uk-margin-remove-bottom">Putin007</h3>
+                        <p class="uk-text-meta uk-margin-remove-top"><time datetime="2016-04-01T19:00">April 01, 2016</time></p>
+                    </div>
+                </div>
+
+                <div class="uk-button-group uk-width-1-1 padding-remove">
+                    <button class="uk-button uk-button-default uk-width-expand">Скачать</button>
+                    <div class="uk-inline">
+                        <button class="uk-button uk-button-default" type="button"><span uk-icon="icon:  triangle-down"></span></button>
+                        <div class="uk-background-secondary uk-light" uk-dropdown="mode: click; boundary: ! .uk-button-group; boundary-align: true;">
+                            <ul class="uk-nav uk-dropdown-nav ">
+                                <li><a href="#">Windows</a></li>
+                                <li><a href="#">Linux</a></li>
+                                <li><a href="#">Android</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div class="uk-margin">
                 <p><?= $content['description']; ?></p>
@@ -138,8 +163,8 @@
                     <div class="uk-card-footer">
                         
                             <div class="uk-button-group uk-width-1-1">
-                                <button class="uk-button uk-button-default uk-width-2-3">Скачать</button>
-                                <div class="uk-inline uk-width-1-3">
+                                <button class="uk-button uk-button-default uk-width-expand">Скачать</button>
+                                <div class="uk-inline">
                                     <button class="uk-button uk-button-default" type="button"><span uk-icon="icon:  triangle-down"></span></button>
                                     <div class="uk-background-secondary uk-light" uk-dropdown="mode: click; boundary: ! .uk-button-group; boundary-align: true;">
                                         <ul class="uk-nav uk-dropdown-nav ">
