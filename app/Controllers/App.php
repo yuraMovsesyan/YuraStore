@@ -13,12 +13,13 @@ class App extends Controller
         $app['images'] = json_decode($app['images'], true);
         $data = [
             'content'  => $app,
+            'recommendation'  => $model->getApps(),
             'title' => 'Yura.Store',
         ];
 
 		echo view('pattern/header', $data);
 		echo view('pages/app', $data);
-		echo view('pages/comments', $data);
+		//echo view('pages/comments', $data);
 		echo view('pattern/footer');
     }
 
