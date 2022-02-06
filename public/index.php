@@ -89,18 +89,34 @@
 
             <table>
                 <tr>
-                    <th>simpleGame</th>
+                    <th>Ball and labyrinth</th>
                     <th>
                         <div align="right">
-                            <a href="./simpleGame.html">Yura.Store</a> • <a href="https://github.com/yuraMovsesyan/simpleGame">GitHub</a>
+                            <a href="./Ball-And-Labyrinth.php">Yura.Store</a> • <a href="https://github.com/yuraMovsesyan/Ball-And-Labyrinth">GitHub</a>
                         </div>
                     </th>
                 </tr>
                 <tr>
-                    <th>Chess-3D-online</th>
+                    <th>Simple game</th>
                     <th>
                         <div align="right">
-                            <a href="./Chess-3D-online.html">Yura.Store</a> • <a href="https://github.com/yuraMovsesyan/Chess-3D-online">GitHub</a>
+                            <a href="./simpleGame.php">Yura.Store</a> • <a href="https://github.com/yuraMovsesyan/simpleGame">GitHub</a>
+                        </div>
+                    </th>
+                </tr>
+                <tr>
+                    <th>H2</th>
+                    <th>
+                        <div align="right">
+                            <a href="./h2.php">Yura.Store</a> • <a href="https://github.com/yuraMovsesyan/h2">GitHub</a>
+                        </div>
+                    </th>
+                </tr>
+                <tr>
+                    <th>Chess 3D online</th>
+                    <th>
+                        <div align="right">
+                            <a href="./Chess-3D-online.php">Yura.Store</a> • <a href="https://github.com/yuraMovsesyan/Chess-3D-online">GitHub</a>
                         </div>
                     </th>
                 </tr>
