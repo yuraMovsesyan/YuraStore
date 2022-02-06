@@ -28,24 +28,9 @@
 
     <body>
 
-        <!-- Amp Sidebar -->
-        <amp-sidebar id="sidebar-left" class="sample-sidebar" layout="nodisplay" side="left">
-            <aside>
-                <nav>
-                <button on="tap:sidebar-left.close" aria-label="Open menu">
-                    <svg aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="16px" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="18" y1="6" x2="6" y2="18">
-                    </line><line x1="6" y1="6" x2="18" y2="18"></line>
-                    </svg>
-                </button>
-                <ul>
-                    <li><h3>Menu</h3></li>
-                    <li><a href="./simpleGame.html">simpleGame</a></li>
-                    <li><a href="./Chess-3D-online.html">Chess-3D-online</a></li>
-                </ul>
-                </nav>
-            </aside>
-        </amp-sidebar><!-- ./ Amp Sidebar -->
+        <?php
+            include "./menu.php";
+        ?>
 
         <!-- Nav -->
         <nav>
@@ -78,10 +63,10 @@
         <main>
             <hgroup>
                 <h1>Chess-3D-online</h1>
-                <h2>Online chess for two</h2>
+                <h2>A simple puzzle game with 15 levels</h2>
             </hgroup>
             <figure>
-                <amp-img src="https://camo.githubusercontent.com/d38f5bf2dd3315b12618229cc2918ae9e2d25a554604f5adb12e976b9a297fd6/68747470733a2f2f73756e392d34362e757365726170692e636f6d2f696d70672f736b624734637231586d6475717a71664262646b49663638727a34777459645f66536f6f50672f636d3434475157463631412e6a70673f73697a653d313932307831303830267175616c6974793d3936267369676e3d303062336235393637656636613434636631666438363537393365306633383926747970653d616c62756d"
+                <amp-img src="https://raw.githubusercontent.com/yuraMovsesyan/simpleGame/main/SimpleGame.gif"
                         width="2000"
                         height="1000"
                         layout="responsive"
@@ -89,8 +74,8 @@
                 </amp-img>
             </figure>
             <p>
-                <a href="https://github.com/yuraMovsesyan/Chess-3D-online/tree/main/Chess/app/windows" role="button">Download</a>
-                <a href="https://github.com/yuraMovsesyan/Chess-3D-online" role="button">GitHub</a>
+                <a href="https://github.com/yuraMovsesyan/simpleGame/releases/download/untagged-9816289f2ce52aca2023/SimpleGame.zip" role="button">Download</a>
+                <a href="https://github.com/yuraMovsesyan/simpleGame" role="button">GitHub</a>
             </p>
             <p>
                 Games are created using free tools. All materials for the game are taken from open sources in which they are distributed for free. At the same time, not a single game is not monetized and is created exclusively with open source code.
