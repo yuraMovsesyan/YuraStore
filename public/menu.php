@@ -12,6 +12,7 @@
             <li><h3>Menu</h3></li>
             <li><a href="./Ball-And-Labyrinth.php">Ball and labyrinth</a></li>
             <li><a href="./simpleGame.php">Simple game</a></li>
+            <li><a href="./h2.php">H2</a></li>
             <li><a href="./Chess-3D-online.php">Chess 3D online</a></li>
         </ul>
         </nav>
